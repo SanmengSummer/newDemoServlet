@@ -9,6 +9,14 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>UserAddServlet</servlet-name>
-        <url-pattern>/newDemoServlet_war_exploded/user/add</url-pattern>
+        <url-pattern>/user/add</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UserFindServlet</servlet-name>
+        <servlet-class>com.example.newDemoServlet.UserFindServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserFindServlet</servlet-name>
+        <url-pattern>/user/find</url-pattern>
     </servlet-mapping>
 </web-app>

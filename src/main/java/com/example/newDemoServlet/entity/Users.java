@@ -1,6 +1,7 @@
 package com.example.newDemoServlet.entity;
 
 public class Users {
+    private int userId;
     private String userName;
     private String passWord;
     private String sex;
@@ -9,11 +10,27 @@ public class Users {
     public Users() {
     }
 
-    public Users(String userName, String passWord, String sex, String email) {
+    public Users( String userName, String passWord, String sex, String email) {
         this.userName = userName;
         this.passWord = passWord;
         this.sex = sex;
         this.email = email;
+    }
+
+    public Users(int userId, String userName, String passWord, String sex, String email) {
+        this.userId = userId;
+        this.userName = userName;
+        this.passWord = passWord;
+        this.sex = sex;
+        this.email = email;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {
