@@ -19,4 +19,12 @@
         <servlet-name>UserFindServlet</servlet-name>
         <url-pattern>/user/find</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>UserDeleteServlet</servlet-name>
+        <servlet-class>com.example.newDemoServlet.UserDeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserDeleteServlet</servlet-name>
+        <url-pattern>/user/delete</url-pattern>
+    </servlet-mapping>
 </web-app>

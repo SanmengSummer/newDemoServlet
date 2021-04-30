@@ -53,7 +53,7 @@ public class UserDao {
                 String password = resultSet.getString("password");
                 String sex = resultSet.getString("sex");
                 String email = resultSet.getString("email");
-                Users users = new Users(userId,userName, password, sex, email);
+                Users users = new Users(userId, userName, password, sex, email);
                 list.add(users);
                 System.out.println(userName);
             }
@@ -70,5 +70,27 @@ public class UserDao {
             }
         }
         return list;
+    }
+
+    public int delete(String userId) {
+        try {
+            String sql = "delete  from users where userId=?";
+            if (conn == null) conn = JdbcUtils.getConn();
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, Integer.valueOf(userId));
+            result = statement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                assert conn != null;
+                conn.close();
+                statement.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 }

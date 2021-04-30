@@ -19,12 +19,6 @@ public class UserFindServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserDao userDao = new UserDao();
         List<Users> all = userDao.findAll();
-//        String userName, password, sex, email;
-//        userName = request.getParameter("userName");
-//        password = request.getParameter("password");
-//        sex = request.getParameter("sex");
-//        email = request.getParameter("email");
-//        Users users = new Users(userName, password, sex, email);
         response.setContentType("text/html;charset=utf-8");
         PrintWriter writer = response.getWriter();
         writer.print("<table border='2' align='center'>");
@@ -34,14 +28,16 @@ public class UserFindServlet extends HttpServlet {
         writer.print("<td>用户密码</td>");
         writer.print("<td>用户性别</td>");
         writer.print("<td>用户邮箱</td>");
+        writer.print("<td>操作</td>");
         writer.print("</tr>");
-        for (Users users:all) {
+        for (Users users : all) {
             writer.print("<tr>");
-            writer.print("<td>"+users.getUserId()+"</td>");
-            writer.print("<td>"+users.getUserName()+"</td>");
-            writer.print("<td>"+users.getPassWord()+"</td>");
-            writer.print("<td>"+users.getSex()+"</td>");
-            writer.print("<td>"+users.getEmail()+"</td>");
+            writer.print("<td>" + users.getUserId() + "</td>");
+            writer.print("<td>" + users.getUserName() + "</td>");
+            writer.print("<td>" + users.getPassWord() + "</td>");
+            writer.print("<td>" + users.getSex() + "</td>");
+            writer.print("<td>" + users.getEmail() + "</td>");
+            writer.print("<td><a href='/newDemoServlet_war_exploded/user/delete?userId=" + users.getUserId() + "'>删除用户</a></td>");
             writer.print("</tr>");
         }
         writer.print("</table>");
