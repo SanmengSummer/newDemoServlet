@@ -93,4 +93,31 @@ public class UserDao {
         }
         return result;
     }
+
+    public int login(String name, String psw) {
+        ResultSet resultSet = null;
+        try {
+            String sql = "select count(*) from users where userName=? and password=?";
+            if (conn == null) conn = JdbcUtils.getConn();
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, name);
+            statement.setString(2, psw);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                result = resultSet.getInt("count(*)");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                assert conn != null;
+                resultSet = null;
+                conn.close();
+                statement.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
 }
